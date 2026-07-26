@@ -99,3 +99,35 @@ ax2.legend(loc="upper center", frameon=False, fontsize=8.8, ncol=1, bbox_to_anch
 fig.tight_layout(); fig.savefig("figures/fig_interp.png", dpi=150); plt.close(fig)
 
 print("wrote figures/fig_chrl.png + figures/fig_interp.png")
+
+# ---------------------------------------------------------------- F9: the CHRL ablation
+# Numbers verbatim from the CHRL repo README ablation (4 walk-forward validation folds):
+# arms = full CHRL / constraints-only / hierarchy-only / flat.
+fig, axes = plt.subplots(1, 5, figsize=(13.6, 3.4))
+arms = ["Full CHRL\n(hier + constr)", "Constraints only\n(no stock hier)",
+        "Hierarchy only\n(no constraints)", "Flat\n(neither)"]
+COLS = [GREEN, BLUE, "#9aa5ad", "#6f7d88"]
+panels = [
+    ("Return (%)", [10.0, 8.2, 10.3, 15.9], False),
+    ("Sharpe", [1.09, 1.05, 0.99, 1.14], False),
+    ("Max drawdown (%)", [7.3, 6.3, 13.0, 14.8], True),
+    ("Daily turnover L1 (%)", [0.8, 0.6, 1.8, 1.9], True),
+    ("Return / drawdown", [1.37, 1.31, 0.79, 1.08], False),
+]
+for ax, (lab, vals, lower_better) in zip(axes, panels):
+    y = np.arange(len(arms))[::-1]
+    bars = ax.barh(y, vals, color=COLS, height=0.62)
+    for b, v in zip(bars, vals):
+        ax.text(b.get_width() + max(vals) * 0.02, b.get_y() + b.get_height() / 2,
+                f"{v:g}", va="center", fontsize=8.6, fontweight="bold", color=INK)
+    ax.set_yticks(y)
+    ax.set_yticklabels(arms if ax is axes[0] else [""] * 4, fontsize=8)
+    ax.set_title(lab, fontsize=9.6)
+    ax.set_xlim(0, max(vals) * 1.22)
+    if lower_better:
+        ax.text(0.98, -0.13, "lower is better", transform=ax.transAxes, ha="right",
+                fontsize=7.5, color=MUT)
+fig.suptitle("Hierarchy and constraints ablation, 4 walk-forward validation folds", fontsize=11.5, y=1.02)
+fig.tight_layout()
+fig.savefig("figures/fig_chrl_ablation.png", dpi=150, bbox_inches="tight"); plt.close(fig)
+print("wrote figures/fig_chrl_ablation.png")
