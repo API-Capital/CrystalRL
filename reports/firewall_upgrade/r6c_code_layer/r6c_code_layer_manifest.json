@@ -1,0 +1,75 @@
+{
+  "created_by": "reports/firewall_upgrade/build_r6c_code_layer.py",
+  "purpose": "P22-parity discrete code/primitive layer for R6c over the true 64-d final latent.",
+  "latent": "policy_net.5.ReLU (64-d true final policy latent)",
+  "scope": "DESCRIPTIVE codebook on the frozen 2022-2023 window, self-standardized. Leak-safe train-fit is a follow-up.",
+  "K_selected": 9,
+  "silhouette_at_K": 0.219,
+  "k_selection": [
+    {
+      "k": 4,
+      "silhouette": 0.142,
+      "stability_ari": 0.7,
+      "min_cluster_frac": null
+    },
+    {
+      "k": 5,
+      "silhouette": 0.155,
+      "stability_ari": 0.561,
+      "min_cluster_frac": null
+    },
+    {
+      "k": 6,
+      "silhouette": 0.167,
+      "stability_ari": 0.603,
+      "min_cluster_frac": null
+    },
+    {
+      "k": 7,
+      "silhouette": 0.165,
+      "stability_ari": 0.427,
+      "min_cluster_frac": null
+    },
+    {
+      "k": 8,
+      "silhouette": 0.184,
+      "stability_ari": 0.553,
+      "min_cluster_frac": null
+    },
+    {
+      "k": 9,
+      "silhouette": 0.203,
+      "stability_ari": 0.619,
+      "min_cluster_frac": null
+    },
+    {
+      "k": 10,
+      "silhouette": 0.214,
+      "stability_ari": 0.512,
+      "min_cluster_frac": null
+    },
+    {
+      "k": 12,
+      "silhouette": 0.245,
+      "stability_ari": 0.534,
+      "min_cluster_frac": null
+    }
+  ],
+  "schema_parity_with_p22": [
+    "code_id",
+    "code_index",
+    "selected_prob",
+    "top1_prob",
+    "top2_prob",
+    "probability_strength",
+    "margin_strength",
+    "entropy_strength",
+    "confidence_strength"
+  ],
+  "honest_note": "R6c's latent is more CONTINUOUS than P22's by-construction discrete codes; silhouette is modest (0.219). Codes are a useful discretization of a continuous stance manifold, not crisp native primitives. Soft probabilities expose that continuity.",
+  "outputs": {
+    "assignments": "r6c_code_assignments.csv",
+    "dictionary": "r6c_code_dictionary.csv",
+    "codebook": "r6c_codebook.npz"
+  }
+}

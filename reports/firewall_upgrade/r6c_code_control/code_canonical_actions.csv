@@ -1,0 +1,10 @@
+code_index,commanded_cash,commanded_risky_hhi,empirical_mean_cash_target,top3,label
+0,0.309,0.035,0.289,"UNH:0.03, VZ:0.03, AXP:0.03","high-cash/defensive, in-drawdown, high-turnover"
+1,0.245,0.035,0.191,"UNH:0.03, KO:0.03, AXP:0.03","low-cash/invested, risk-stressed"
+2,0.237,0.035,0.231,"KO:0.03, UNH:0.03, V:0.03","mid-cash, in-drawdown"
+3,0.218,0.035,0.274,"UNH:0.03, AXP:0.03, KO:0.03","high-cash/defensive, in-drawdown, risk-stressed"
+4,0.228,0.035,0.205,"V:0.03, AXP:0.03, UNH:0.03",low-cash/invested
+5,0.21,0.035,0.211,"V:0.03, AXP:0.03, UNH:0.03","mid-cash, high-turnover"
+6,0.151,0.035,0.224,"UNH:0.04, V:0.03, VZ:0.03","mid-cash, high-turnover"
+7,0.187,0.035,0.193,"UNH:0.03, V:0.03, KO:0.03",low-cash/invested
+8,0.196,0.035,0.212,"AXP:0.03, KO:0.03, WMT:0.03","mid-cash, risk-stressed"

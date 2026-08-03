@@ -1,0 +1,46 @@
+{
+  "n_configs": 109,
+  "best_by_silhouette": {
+    "rep": "behavior+trig",
+    "method": "hdbscan_mcs8",
+    "k": 2,
+    "k_used": 2,
+    "clustered_frac": 0.979,
+    "silhouette": 0.534,
+    "davies_bouldin": 0.64,
+    "calinski_harabasz": 56.7
+  },
+  "best_per_representation": {
+    "latent64": {
+      "method": "kmeans",
+      "k": 8,
+      "silhouette": 0.188,
+      "davies_bouldin": 2.014
+    },
+    "latent_pca8": {
+      "method": "kmeans",
+      "k": 8,
+      "silhouette": 0.285,
+      "davies_bouldin": 1.324
+    },
+    "windowed17": {
+      "method": "kmeans",
+      "k": 7,
+      "silhouette": 0.091,
+      "davies_bouldin": 2.644
+    },
+    "behavior": {
+      "method": "hdbscan_mcs12",
+      "k": 2,
+      "silhouette": 0.408,
+      "davies_bouldin": 0.847
+    },
+    "behavior+trig": {
+      "method": "hdbscan_mcs8",
+      "k": 2,
+      "silhouette": 0.534,
+      "davies_bouldin": 0.64
+    }
+  },
+  "verdict": "crisp achievable"
+}

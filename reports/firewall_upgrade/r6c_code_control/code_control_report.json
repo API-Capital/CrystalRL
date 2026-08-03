@@ -1,0 +1,10 @@
+{
+  "K": 9,
+  "cash_command_spread_across_codes": 0.158,
+  "commanded_vs_empirical_cash_spearman": 0.2,
+  "steering_monotonicity_spearman": {
+    "to_high_cash": 1.0,
+    "to_low_cash": -1.0
+  },
+  "interpretation": "cash_command_spread large => codes command DISTINCT actions (controllable). commanded_vs_empirical_cash_spearman ~ +1 => forcing a code reproduces the stance it was labeled with (faithful control). steering monotonicity ~ +-1 => smooth latent dial."
+}

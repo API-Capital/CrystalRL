@@ -1,0 +1,301 @@
+{
+  "experiment": "W4 goal-based DP champion (Das-Ostrov backward induction) over W3 scenarios",
+  "engine": "W3_FORECAST_V1_2",
+  "scenario_status": "UNCALIBRATED \u2014 policy-training use only",
+  "gates": {
+    "GDP1_sanity": {
+      "dominant_action_violations": 0,
+      "riskless_boundary_ok": true,
+      "ok": true
+    },
+    "per_case": {
+      "das_ostrov_double_10y": {
+        "GDP2_noninferior_after_costs": true,
+        "GDP3_stable_no_tail_laundering": true,
+        "GDP4_legible_monotone": true
+      },
+      "capacity_dd15_double_10y": {
+        "GDP2_noninferior_after_costs": true,
+        "GDP3_stable_no_tail_laundering": true,
+        "GDP4_legible_monotone": true
+      },
+      "cn_1_5x_10y": {
+        "GDP2_noninferior_after_costs": true,
+        "GDP3_stable_no_tail_laundering": false,
+        "GDP4_legible_monotone": true
+      },
+      "cn_1_5x_10y_magaware": {
+        "GDP2_noninferior_after_costs": true,
+        "GDP3_stable_no_tail_laundering": false,
+        "GDP4_legible_monotone": true
+      },
+      "us_double_10y_contrib3": {
+        "GDP2_noninferior_after_costs": true,
+        "GDP3_stable_no_tail_laundering": false,
+        "GDP4_legible_monotone": true
+      }
+    }
+  },
+  "cases": {
+    "das_ostrov_double_10y": {
+      "objective": "P(W_T >= G)",
+      "kernels_dd_p95": {
+        "SPY100": -0.361,
+        "SPY6040": -0.208,
+        "SPY_c40": -0.226,
+        "SPY_c80": -0.075,
+        "CASH100": 0.0
+      },
+      "dp": {
+        "P_goal": 0.3785,
+        "E_utility": 0.3785,
+        "E_shortfall_given_miss": 0.4438,
+        "CVaR10_shortfall": 0.7902,
+        "median_WT": 0.8156
+      },
+      "best_static": "SPY100",
+      "best_static_res": {
+        "P_goal": 0.274,
+        "E_utility": 0.274,
+        "E_shortfall_given_miss": 0.4438,
+        "CVaR10_shortfall": 0.7937,
+        "median_WT": 0.6934
+      },
+      "lift_pp": 10.45,
+      "lift_ci90_pp": [
+        9.28,
+        11.65
+      ],
+      "monotone_frac": 0.975,
+      "folds": {
+        "full_A": {
+          "lift_pp": 10.45,
+          "best_static": "SPY100"
+        },
+        "full_B": {
+          "lift_pp": 10.18,
+          "best_static": "SPY100"
+        },
+        "half_A": {
+          "lift_pp": 9.5,
+          "best_static": "SPY100"
+        },
+        "half_B": {
+          "lift_pp": 9.2,
+          "best_static": "SPY100"
+        }
+      },
+      "GDP2_noninferior_after_costs": true,
+      "GDP3_stable_no_tail_laundering": true,
+      "GDP4_legible_monotone": true
+    },
+    "capacity_dd15_double_10y": {
+      "objective": "P(W_T >= G)",
+      "kernels_dd_p95": {
+        "SPY_c80": -0.075,
+        "CASH100": 0.0
+      },
+      "dp": {
+        "P_goal": 0.0005,
+        "E_utility": 0.0005,
+        "E_shortfall_given_miss": 0.3205,
+        "CVaR10_shortfall": 0.461,
+        "median_WT": 0.6812
+      },
+      "best_static": "SPY_c80",
+      "best_static_res": {
+        "P_goal": 0.0,
+        "E_utility": 0.0,
+        "E_shortfall_given_miss": 0.3204,
+        "CVaR10_shortfall": 0.461,
+        "median_WT": 0.6812
+      },
+      "lift_pp": 0.05,
+      "lift_ci90_pp": [
+        0.0,
+        0.12
+      ],
+      "monotone_frac": 0.9917,
+      "folds": {
+        "full_A": {
+          "lift_pp": 0.05,
+          "best_static": "SPY_c80"
+        },
+        "full_B": {
+          "lift_pp": 0.0,
+          "best_static": "SPY_c80"
+        },
+        "half_A": {
+          "lift_pp": 0.0,
+          "best_static": "SPY_c80"
+        },
+        "half_B": {
+          "lift_pp": 0.0,
+          "best_static": "SPY_c80"
+        }
+      },
+      "GDP2_noninferior_after_costs": true,
+      "GDP3_stable_no_tail_laundering": true,
+      "GDP4_legible_monotone": true
+    },
+    "cn_1_5x_10y": {
+      "objective": "P(W_T >= G)",
+      "kernels_dd_p95": {
+        "CSI500_TR": -0.471,
+        "CSI500_c40": -0.307,
+        "CSI500_c80": -0.103,
+        "CASH100": 0.0
+      },
+      "dp": {
+        "P_goal": 0.8105,
+        "E_utility": 0.8105,
+        "E_shortfall_given_miss": 0.4635,
+        "CVaR10_shortfall": 0.6907,
+        "median_WT": 1.0768
+      },
+      "best_static": "CSI500_c40",
+      "best_static_res": {
+        "P_goal": 0.584,
+        "E_utility": 0.584,
+        "E_shortfall_given_miss": 0.3553,
+        "CVaR10_shortfall": 0.6554,
+        "median_WT": 1.1637
+      },
+      "lift_pp": 22.65,
+      "lift_ci90_pp": [
+        21.25,
+        24.0
+      ],
+      "monotone_frac": 0.975,
+      "folds": {
+        "full_A": {
+          "lift_pp": 22.65,
+          "best_static": "CSI500_c40"
+        },
+        "full_B": {
+          "lift_pp": 21.77,
+          "best_static": "CSI500_c40"
+        },
+        "half_A": {
+          "lift_pp": 22.83,
+          "best_static": "CSI500_c40"
+        },
+        "half_B": {
+          "lift_pp": 21.5,
+          "best_static": "CSI500_c40"
+        }
+      },
+      "GDP2_noninferior_after_costs": true,
+      "GDP3_stable_no_tail_laundering": false,
+      "GDP4_legible_monotone": true
+    },
+    "cn_1_5x_10y_magaware": {
+      "objective": "U = 1{w>=1} - 1.0*max(0,1-w)",
+      "kernels_dd_p95": {
+        "CSI500_TR": -0.471,
+        "CSI500_c40": -0.307,
+        "CSI500_c80": -0.103,
+        "CASH100": 0.0
+      },
+      "dp": {
+        "P_goal": 0.79,
+        "E_utility": 0.7062,
+        "E_shortfall_given_miss": 0.3989,
+        "CVaR10_shortfall": 0.6713,
+        "median_WT": 1.0617
+      },
+      "best_static": "CSI500_c40",
+      "best_static_res": {
+        "P_goal": 0.584,
+        "E_utility": 0.4362,
+        "E_shortfall_given_miss": 0.3553,
+        "CVaR10_shortfall": 0.6554,
+        "median_WT": 1.1637
+      },
+      "lift_pp": 27.0,
+      "lift_ci90_pp": [
+        25.08,
+        28.87
+      ],
+      "monotone_frac": 0.975,
+      "folds": {
+        "full_A": {
+          "lift_pp": 27.0,
+          "best_static": "CSI500_c40"
+        },
+        "full_B": {
+          "lift_pp": 24.24,
+          "best_static": "CSI500_c40"
+        },
+        "half_A": {
+          "lift_pp": 28.51,
+          "best_static": "CSI500_c80"
+        },
+        "half_B": {
+          "lift_pp": 28.21,
+          "best_static": "CSI500_c80"
+        }
+      },
+      "GDP2_noninferior_after_costs": true,
+      "GDP3_stable_no_tail_laundering": false,
+      "GDP4_legible_monotone": true
+    },
+    "us_double_10y_contrib3": {
+      "objective": "P(W_T >= G)",
+      "kernels_dd_p95": {
+        "SPY100": -0.361,
+        "SPY6040": -0.208,
+        "SPY_c40": -0.226,
+        "SPY_c80": -0.075,
+        "CASH100": 0.0
+      },
+      "dp": {
+        "P_goal": 0.8205,
+        "E_utility": 0.8205,
+        "E_shortfall_given_miss": 0.1654,
+        "CVaR10_shortfall": 0.2898,
+        "median_WT": 1.0359
+      },
+      "best_static": "SPY_c80",
+      "best_static_res": {
+        "P_goal": 0.6002,
+        "E_utility": 0.6002,
+        "E_shortfall_given_miss": 0.0724,
+        "CVaR10_shortfall": 0.1495,
+        "median_WT": 1.0236
+      },
+      "lift_pp": 22.03,
+      "lift_ci90_pp": [
+        20.45,
+        23.55
+      ],
+      "monotone_frac": 0.9792,
+      "folds": {
+        "full_A": {
+          "lift_pp": 22.03,
+          "best_static": "SPY_c80"
+        },
+        "full_B": {
+          "lift_pp": 21.38,
+          "best_static": "SPY_c80"
+        },
+        "half_A": {
+          "lift_pp": 21.62,
+          "best_static": "SPY6040"
+        },
+        "half_B": {
+          "lift_pp": 23.35,
+          "best_static": "SPY6040"
+        }
+      },
+      "GDP2_noninferior_after_costs": true,
+      "GDP3_stable_no_tail_laundering": false,
+      "GDP4_legible_monotone": true
+    }
+  },
+  "artifacts": {
+    "policy_tables": "data/_personal_invest_registry/dp_policies",
+    "teacher_trajectories": "data/_personal_invest_registry/dp_teacher_trajectories.csv"
+  },
+  "verdict": "W4 gates partial \u2014 see per-case gate flags; DP does not replace the static menu where it fails"
+}
