@@ -1,0 +1,6 @@
+=== E-04 — G12 legibility-raising rule attempt (seeds=[0, 1, 2], rounds=45, smoke=False) ===
+non-saturation: {'best_return_mdl_deficit_per_seed': [0.363, 0.078, 0.187], 'verdict': 'NON-SATURATED (legibility is NOT free on G12)'}
+certified legibility-raising moves: 0
+verdict: NULL — no certified legibility-raising rule on G12 this run (legibility is not freely raisable)
+Table 3 row: none certified — on G12 no gate-accepted move lowered MDL deficit without regressing return
+wrote hl_v4_g12_report.json
