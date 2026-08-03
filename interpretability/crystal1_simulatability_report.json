@@ -1,0 +1,255 @@
+{
+  "experiment": "CRYSTAL-1 simulatability - K-leaf tree vs the DP champion policy table",
+  "why": "the CrystalScore simulatability term for CRYSTAL-1 was quoted in the papers but never computed into an artifact; this makes it reproducible",
+  "method": {
+    "features": [
+      "years_left",
+      "funding_ratio"
+    ],
+    "label": "book chosen by the DP champion in that cell",
+    "model": "DecisionTreeClassifier(max_leaf_nodes=K)",
+    "leaf_budgets": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "headline_k": 8
+  },
+  "mandatory_dumb_baseline": "majority class - always answer the most common book. Register rule: report the LIFT, never the raw accuracy alone.",
+  "cases": {
+    "capacity_dd15_double_10y": {
+      "n_cells": 2410,
+      "n_distinct_books": 2,
+      "book_shares": {
+        "SPY_c80": 0.9556,
+        "CASH100": 0.0444
+      },
+      "majority_class_baseline": 0.9556,
+      "per_leaf_budget": {
+        "2": {
+          "leaves": 2,
+          "accuracy": 0.9556,
+          "cv_accuracy": 0.9556,
+          "lift_over_majority": 0.0,
+          "normalized": 0.0
+        },
+        "4": {
+          "leaves": 4,
+          "accuracy": 0.9905,
+          "cv_accuracy": 0.9855,
+          "lift_over_majority": 0.0349,
+          "normalized": 0.785
+        },
+        "8": {
+          "leaves": 8,
+          "accuracy": 0.9975,
+          "cv_accuracy": 0.9934,
+          "lift_over_majority": 0.0419,
+          "normalized": 0.9439
+        },
+        "16": {
+          "leaves": 16,
+          "accuracy": 0.9992,
+          "cv_accuracy": 0.9946,
+          "lift_over_majority": 0.0436,
+          "normalized": 0.9813
+        }
+      },
+      "headline_k": 8,
+      "simulatability_raw_accuracy": 0.9975,
+      "simulatability_lift": 0.0419,
+      "simulatability_normalized": 0.9439,
+      "rules": "|--- funding_ratio <= 1.15\n|   |--- funding_ratio <= 0.87\n|   |   |--- funding_ratio <= 0.81\n|   |   |   |--- class: SPY_c80\n|   |   |--- funding_ratio >  0.81\n|   |   |   |--- years_left <= 7.50\n|   |   |   |   |--- years_left <= 6.50\n|   |   |   |   |   |--- class: SPY_c80\n|   |   |   |   |--- years_left >  6.50\n|   |   |   |   |   |--- class: SPY_c80\n|   |   |   |--- years_left >  7.50\n|   |   |   |   |--- class: CASH100\n|   |--- funding_ratio >  0.87\n|   |   |--- funding_ratio <= 0.94\n|   |   |   |--- years_left <= 4.50\n|   |   |   |   |--- class: SPY_c80\n|   |   |   |--- years_left >  4.50\n|   |   |   |   |--- class: CASH100\n|   |   |--- funding_ratio >  0.94\n|   |   |   |--- class: CASH100\n|--- funding_ratio >  1.15\n|   |--- class: SPY_c80"
+    },
+    "cn_1_5x_10y": {
+      "n_cells": 2410,
+      "n_distinct_books": 4,
+      "book_shares": {
+        "CSI500_TR": 0.7203,
+        "CSI500_c40": 0.1274,
+        "CSI500_c80": 0.0983,
+        "CASH100": 0.0539
+      },
+      "majority_class_baseline": 0.7203,
+      "per_leaf_budget": {
+        "2": {
+          "leaves": 2,
+          "accuracy": 0.7203,
+          "cv_accuracy": 0.7203,
+          "lift_over_majority": 0.0,
+          "normalized": 0.0
+        },
+        "4": {
+          "leaves": 4,
+          "accuracy": 0.8768,
+          "cv_accuracy": 0.8747,
+          "lift_over_majority": 0.1564,
+          "normalized": 0.5593
+        },
+        "8": {
+          "leaves": 8,
+          "accuracy": 0.9651,
+          "cv_accuracy": 0.9519,
+          "lift_over_majority": 0.2448,
+          "normalized": 0.8754
+        },
+        "16": {
+          "leaves": 16,
+          "accuracy": 0.9759,
+          "cv_accuracy": 0.9639,
+          "lift_over_majority": 0.2556,
+          "normalized": 0.9139
+        }
+      },
+      "headline_k": 8,
+      "simulatability_raw_accuracy": 0.9651,
+      "simulatability_lift": 0.2448,
+      "simulatability_normalized": 0.8754,
+      "rules": "|--- funding_ratio <= 0.58\n|   |--- class: CSI500_TR\n|--- funding_ratio >  0.58\n|   |--- funding_ratio <= 3.71\n|   |   |--- funding_ratio <= 2.14\n|   |   |   |--- funding_ratio <= 1.30\n|   |   |   |   |--- funding_ratio <= 0.92\n|   |   |   |   |   |--- years_left <= 4.50\n|   |   |   |   |   |   |--- class: CSI500_TR\n|   |   |   |   |   |--- years_left >  4.50\n|   |   |   |   |   |   |--- funding_ratio <= 0.77\n|   |   |   |   |   |   |   |--- class: CSI500_c40\n|   |   |   |   |   |   |--- funding_ratio >  0.77\n|   |   |   |   |   |   |   |--- class: CSI500_c80\n|   |   |   |   |--- funding_ratio >  0.92\n|   |   |   |   |   |--- class: CASH100\n|   |   |   |--- funding_ratio >  1.30\n|   |   |   |   |--- class: CSI500_c80\n|   |   |--- funding_ratio >  2.14\n|   |   |   |--- class: CSI500_c40\n|   |--- funding_ratio >  3.71\n|   |   |--- class: CSI500_TR"
+    },
+    "cn_1_5x_10y_magaware": {
+      "n_cells": 2410,
+      "n_distinct_books": 4,
+      "book_shares": {
+        "CSI500_TR": 0.7104,
+        "CSI500_c40": 0.1349,
+        "CSI500_c80": 0.0992,
+        "CASH100": 0.0556
+      },
+      "majority_class_baseline": 0.7104,
+      "per_leaf_budget": {
+        "2": {
+          "leaves": 2,
+          "accuracy": 0.7104,
+          "cv_accuracy": 0.7104,
+          "lift_over_majority": 0.0,
+          "normalized": 0.0
+        },
+        "4": {
+          "leaves": 4,
+          "accuracy": 0.8651,
+          "cv_accuracy": 0.8581,
+          "lift_over_majority": 0.1548,
+          "normalized": 0.5344
+        },
+        "8": {
+          "leaves": 8,
+          "accuracy": 0.9631,
+          "cv_accuracy": 0.9539,
+          "lift_over_majority": 0.2527,
+          "normalized": 0.8725
+        },
+        "16": {
+          "leaves": 16,
+          "accuracy": 0.9759,
+          "cv_accuracy": 0.9618,
+          "lift_over_majority": 0.2656,
+          "normalized": 0.9169
+        }
+      },
+      "headline_k": 8,
+      "simulatability_raw_accuracy": 0.9631,
+      "simulatability_lift": 0.2527,
+      "simulatability_normalized": 0.8725,
+      "rules": "|--- funding_ratio <= 0.54\n|   |--- class: CSI500_TR\n|--- funding_ratio >  0.54\n|   |--- funding_ratio <= 3.71\n|   |   |--- funding_ratio <= 2.14\n|   |   |   |--- funding_ratio <= 1.30\n|   |   |   |   |--- funding_ratio <= 0.89\n|   |   |   |   |   |--- years_left <= 4.50\n|   |   |   |   |   |   |--- class: CSI500_TR\n|   |   |   |   |   |--- years_left >  4.50\n|   |   |   |   |   |   |--- funding_ratio <= 0.77\n|   |   |   |   |   |   |   |--- class: CSI500_c40\n|   |   |   |   |   |   |--- funding_ratio >  0.77\n|   |   |   |   |   |   |   |--- class: CSI500_c80\n|   |   |   |   |--- funding_ratio >  0.89\n|   |   |   |   |   |--- class: CASH100\n|   |   |   |--- funding_ratio >  1.30\n|   |   |   |   |--- class: CSI500_c80\n|   |   |--- funding_ratio >  2.14\n|   |   |   |--- class: CSI500_c40\n|   |--- funding_ratio >  3.71\n|   |   |--- class: CSI500_TR"
+    },
+    "das_ostrov_double_10y": {
+      "n_cells": 2410,
+      "n_distinct_books": 5,
+      "book_shares": {
+        "SPY100": 0.8195,
+        "SPY_c40": 0.0685,
+        "SPY_c80": 0.0631,
+        "CASH100": 0.0415,
+        "SPY6040": 0.0075
+      },
+      "majority_class_baseline": 0.8195,
+      "per_leaf_budget": {
+        "2": {
+          "leaves": 2,
+          "accuracy": 0.8195,
+          "cv_accuracy": 0.8195,
+          "lift_over_majority": 0.0,
+          "normalized": 0.0
+        },
+        "4": {
+          "leaves": 4,
+          "accuracy": 0.9174,
+          "cv_accuracy": 0.9199,
+          "lift_over_majority": 0.0979,
+          "normalized": 0.5425
+        },
+        "8": {
+          "leaves": 8,
+          "accuracy": 0.9763,
+          "cv_accuracy": 0.973,
+          "lift_over_majority": 0.1568,
+          "normalized": 0.869
+        },
+        "16": {
+          "leaves": 16,
+          "accuracy": 0.9859,
+          "cv_accuracy": 0.9776,
+          "lift_over_majority": 0.1664,
+          "normalized": 0.9218
+        }
+      },
+      "headline_k": 8,
+      "simulatability_raw_accuracy": 0.9763,
+      "simulatability_lift": 0.1568,
+      "simulatability_normalized": 0.869,
+      "rules": "|--- funding_ratio <= 0.68\n|   |--- class: SPY100\n|--- funding_ratio >  0.68\n|   |--- funding_ratio <= 2.31\n|   |   |--- funding_ratio <= 1.59\n|   |   |   |--- funding_ratio <= 1.15\n|   |   |   |   |--- funding_ratio <= 0.89\n|   |   |   |   |   |--- years_left <= 5.50\n|   |   |   |   |   |   |--- class: SPY100\n|   |   |   |   |   |--- years_left >  5.50\n|   |   |   |   |   |   |--- class: SPY_c40\n|   |   |   |   |--- funding_ratio >  0.89\n|   |   |   |   |   |--- class: CASH100\n|   |   |   |--- funding_ratio >  1.15\n|   |   |   |   |--- class: SPY_c80\n|   |   |--- funding_ratio >  1.59\n|   |   |   |--- funding_ratio <= 2.25\n|   |   |   |   |--- class: SPY_c40\n|   |   |   |--- funding_ratio >  2.25\n|   |   |   |   |--- class: SPY6040\n|   |--- funding_ratio >  2.31\n|   |   |--- class: SPY100"
+    },
+    "us_double_10y_contrib3": {
+      "n_cells": 2410,
+      "n_distinct_books": 5,
+      "book_shares": {
+        "SPY100": 0.8075,
+        "SPY_c40": 0.0672,
+        "SPY_c80": 0.0631,
+        "CASH100": 0.051,
+        "SPY6040": 0.0112
+      },
+      "majority_class_baseline": 0.8075,
+      "per_leaf_budget": {
+        "2": {
+          "leaves": 2,
+          "accuracy": 0.8075,
+          "cv_accuracy": 0.8075,
+          "lift_over_majority": 0.0,
+          "normalized": 0.0
+        },
+        "4": {
+          "leaves": 4,
+          "accuracy": 0.8759,
+          "cv_accuracy": 0.8568,
+          "lift_over_majority": 0.0685,
+          "normalized": 0.3556
+        },
+        "8": {
+          "leaves": 8,
+          "accuracy": 0.9324,
+          "cv_accuracy": 0.9207,
+          "lift_over_majority": 0.1249,
+          "normalized": 0.6487
+        },
+        "16": {
+          "leaves": 16,
+          "accuracy": 0.9485,
+          "cv_accuracy": 0.9299,
+          "lift_over_majority": 0.1411,
+          "normalized": 0.7328
+        }
+      },
+      "headline_k": 8,
+      "simulatability_raw_accuracy": 0.9324,
+      "simulatability_lift": 0.1249,
+      "simulatability_normalized": 0.6487,
+      "rules": "|--- funding_ratio <= 2.20\n|   |--- funding_ratio <= 0.61\n|   |   |--- class: SPY100\n|   |--- funding_ratio >  0.61\n|   |   |--- funding_ratio <= 1.37\n|   |   |   |--- funding_ratio <= 1.01\n|   |   |   |   |--- years_left <= 4.50\n|   |   |   |   |   |--- funding_ratio <= 0.83\n|   |   |   |   |   |   |--- class: SPY100\n|   |   |   |   |   |--- funding_ratio >  0.83\n|   |   |   |   |   |   |--- class: CASH100\n|   |   |   |   |--- years_left >  4.50\n|   |   |   |   |   |--- class: CASH100\n|   |   |   |--- funding_ratio >  1.01\n|   |   |   |   |--- class: SPY_c80\n|   |   |--- funding_ratio >  1.37\n|   |   |   |--- funding_ratio <= 1.89\n|   |   |   |   |--- class: SPY_c40\n|   |   |   |--- funding_ratio >  1.89\n|   |   |   |   |--- class: SPY100\n|--- funding_ratio >  2.20\n|   |--- class: SPY100"
+    }
+  },
+  "artifacts": {
+    "policy_tables": "data/_personal_invest_registry/dp_policies"
+  }
+}
