@@ -116,6 +116,11 @@ question. Name the gate explicitly — for G12 it is `src/hl/pareto_gate.py`, no
 
 ## 6. Where things live
 
+Repositories are held in the shared organisation **[`API-Capital`](https://github.com/API-Capital)**,
+with both founders as organisation **Owners** — not as admins on individual repos. Owner is the org
+role that carries co-ownership; repo-admin does not. The org becomes a company asset at
+incorporation.
+
 | | |
 |---|---|
 | mothership (`self-evolving-trading-bot`) | full history, both tracks, source of truth |
@@ -127,6 +132,19 @@ mothership. Mirror it in the same commit that produces it.
 
 > **Why.** Five CrystalScore inputs lived only in the mothership. Nobody noticed until someone tried
 > to run the pipeline from the other repo.
+
+**Move a repo by transfer, never by re-upload.** GitHub's *Settings → Danger Zone → Transfer
+ownership* keeps the full commit history, the tags, the issues, and leaves a redirect from the old
+URL so existing links and clones keep working. Pushing a snapshot into a fresh repo keeps none of
+that.
+
+> **Why.** The first copies placed in the org were snapshot uploads: 4 commits against the source's
+> 35, no tags, and a commit graph with no ancestor in common — so the two could not even be merged
+> normally. Anyone starting from the org copy would have silently got a state that was a week stale
+> and missing the snapshot tag.
+
+**One canonical remote per repo.** When a repo moves, the old location stops receiving pushes the
+same day. Two writable copies of the same project is the failure this section exists to prevent.
 
 ---
 
