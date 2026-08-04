@@ -121,11 +121,11 @@ with both founders as organisation **Owners** — not as admins on individual re
 role that carries co-ownership; repo-admin does not. The org becomes a company asset at
 incorporation.
 
-| | |
-|---|---|
-| mothership (`self-evolving-trading-bot`) | full history, both tracks, source of truth |
-| `CrystalRL` | interpretability extract — clone-and-run |
-| `Hello-CrystalRL` | public evidence slice |
+| repo | what it is | status |
+|---|---|---|
+| `API-Capital/self-evolving-trading-bot` | the mothership — full history, both tracks, all live work; this is where day-to-day commits land | to transfer |
+| `API-Capital/CrystalRL` | interpretability extract — clone-and-run | transferred |
+| `API-Capital/Hello-CrystalRL` | public evidence slice | to transfer |
 
 An artifact needed to reproduce an interpretability result belongs in **CrystalRL**, not only in the
 mothership. Mirror it in the same commit that produces it.
