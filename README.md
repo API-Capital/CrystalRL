@@ -1,8 +1,5 @@
 # CrystalRL
 
-Interpretability track of the CrystalRL lab. This repo is self-contained: paper, live demo,
-code, data, and results.
-
 ## 1 · Try it in 60 seconds
 
 Open **[`live/CrystalRL_live_testing.html`](live/CrystalRL_live_testing.html)** in any browser
