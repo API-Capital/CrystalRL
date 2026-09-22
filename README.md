@@ -1,7 +1,7 @@
 # CrystalRL
 
 Interpretability track of the CrystalRL lab. This repo is self-contained: paper, live demo,
-code, data, and results. This page is your reading order — nothing else.
+code, data, and results.
 
 ## 1 · Try it in 60 seconds
 
